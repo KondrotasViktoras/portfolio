@@ -1,7 +1,8 @@
-// toogle icon navbar
-
-let menuIcon = document.querySelector("#menu-icon");
+// Toggle icon navbar
+let menuIcon = document.querySelector("#burger");
 let navbar = document.querySelector(".navbar");
+let sections = document.querySelectorAll("section");
+let navLinks = document.querySelectorAll("header nav a");
 
 menuIcon.onclick = () => {
   if (menuIcon.classList.contains("fa-bars")) {
@@ -14,32 +15,39 @@ menuIcon.onclick = () => {
   navbar.classList.toggle("active");
 };
 
-// scroll section
-let section = document.querySelectorAll("section");
-let navLinks = document.querySelectorAll("header nav a");
-
+// Scroll section
 window.onscroll = () => {
-  section.forEach((sec) => {
-    let top = window.scrollY;
-    let offset = set.offsetTop - 100;
+  let top = window.scrollY;
+
+  sections.forEach((sec) => {
+    let offset = sec.offsetTop - 100;
     let height = sec.offsetHeight;
     let id = sec.getAttribute("id");
 
-    if (top >= offset && top < offset + heigth) {
-      // active navbar links
-      navLinks.forEach((links) => {
-        links.classList.remove("active");
-        document
-          .querySelector("header nav a[href*=" + id + "]")
-          .classList.add("active");
+    if (top >= offset && top < offset + height) {
+      // Active navbar links
+      navLinks.forEach((link) => {
+        link.classList.remove("active");
       });
+      document
+        .querySelector("header nav a[href='#" + id + "']")
+        .classList.add("active");
+
+      // Active sections for animation on scroll
+      sec.classList.add("show-animate");
+    } else {
+      sec.classList.remove("show-animate");
     }
   });
-};
 
-window.onscroll = () => {
-  //sticky header
+  // Sticky header
   let header = document.querySelector("header");
+  header.classList.toggle("sticky", top > 100);
 
-  header.classList.toggle("sticky", window.scrollY > 100);
+  // Remove toggle icon and navbar when click navbar links (scroll)
+  if (menuIcon.classList.contains("fa-xmark")) {
+    menuIcon.classList.remove("fa-xmark");
+    menuIcon.classList.add("fa-bars");
+    navbar.classList.remove("active");
+  }
 };
