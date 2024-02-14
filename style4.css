@@ -352,7 +352,7 @@ span {
 }
 
 .skills-row .skills-column {
-  flex: 1 1 40rem;
+  flex: 0 0 calc(50% - 5rem);
 }
 
 .skills-column .title {
