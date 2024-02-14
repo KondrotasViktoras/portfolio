@@ -51,3 +51,14 @@ window.onscroll = () => {
     navbar.classList.remove("active");
   }
 };
+
+// document.body.addEventListener("mousemove", function (event) {
+//   const mouseX = event.clientX;
+//   const mouseY = event.clientY;
+
+//   // Calculate brightness based on mouse position
+//   const brightness = (mouseX / window.innerWidth) * 100;
+
+//   // Apply the new background color to the body
+//   document.body.style.background = `hsl(240, 100%, ${brightness}%)`; // Adjust the hue and saturation as per your preference
+// });

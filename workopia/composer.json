@@ -1,0 +1,16 @@
+{
+  "name": "kondrotasviktoras/php-project-workopia",
+  "description": "Job listing application",
+  "authors": [
+    {
+      "name": "Viktoras",
+      "email": "support@viktoras.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Framework\\": "Framework/",
+      "App\\": "App/"
+    }
+  }
+}
